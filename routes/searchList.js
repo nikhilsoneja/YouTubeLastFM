@@ -2,7 +2,8 @@ var express = require('express');
 var router = express.Router();
 
 router.post('/', function (req, res, next) {
-    res.send('respond with a resource');
+    console.log(req);
+    res.render('searchList', { type: req.query.type, keyword: req.query.keyword });
 });
 
 module.exports = router;
