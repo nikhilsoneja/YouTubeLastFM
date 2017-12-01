@@ -1,5 +1,14 @@
 extends layout
 
 block content
-    h1= type
-    h2= keyword
+    .main
+        .row
+            .col-md-6
+                h2= 'Search type:' + type
+                h2= 'Search phrase:' + keyword
+
+                ul.list-group
+                    each track, i in trackList  
+                        li.list-group-item= track.name + ' - ' + (track.artist.name?track.artist.name:track.artist)
+            .col-md-6
+                h2= 'Youtube results'
