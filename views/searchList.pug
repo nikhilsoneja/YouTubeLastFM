@@ -1,5 +1,8 @@
 extends layout
 
+block header 
+     script(src="https://code.jquery.com/jquery-3.2.1.min.js", integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=", crossorigin="anonymous")
+
 block content
     .main
         .row
@@ -7,8 +10,17 @@ block content
                 h2= 'Search type:' + type
                 h2= 'Search phrase:' + keyword
 
-                ul.list-group
+                ul.list-group#songs
                     each track, i in trackList  
                         li.list-group-item= track.name + ' - ' + (track.artist.name?track.artist.name:track.artist)
             .col-md-6
-                h2= 'Youtube results'
+                #player-container
+                    #player
+                #button-container
+                    .playerbutton
+                        a#prevbutton= 'Previous'
+                        a#playpause= 'Play'
+                        a#nextbutton= 'Next'
+                #search-container
+    script(src="../javascripts/youtube.js")                            
+    script(src="https://apis.google.com/js/client.js?onload=googleApiClientReady")                        
